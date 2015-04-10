@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title>密码修改</title>
+  <link rel="stylesheet" href="style/chongshe.css" type="text/css"/>
+  <script src="JS/jquery-1.11.2.min.js"></script>
+  <script src="JS/chongshe.js"></script>
+</head>
+
+<body>
+<!-- 头 -->
+  <div id="head">
+    <div id="logof"></div>
+    <div id="logo">
+      <img src="img/logo.jpg" height="100" width="350" alt="图片无法显示"  /></div>
+    </div>
+    <hr />
+<!--中间  -->
+    <div id="center">
+    <div id="left"></div>
+    <form action="chongshe" method="post">
+    <div id="centerlogin">
+      <div id="center-login"><!-- 白框-->
+      <p id="four">重设密码</p><hr />
+<!-- 填写信息 -->
+       <div id="lotop">
+      <table>
+      <tr>
+         <td class="loginword">用户名</td><td class="space"></td>
+         <td><input type="text" class="kuang" name="num" placeholder="请填写学号"/></td>
+         <td class="text" id="studentID"></td>
+        </tr>
+      <tr>
+      <tr>
+         <td class="loginword">验证码</td><td class="space"></td>
+         <td><input type="text" class="kuang" name="verify"/></td>
+        </tr>
+      <tr>
+          <td class="loginword">新密码</td><td class="space"></td>
+          <td><input type="password" class="kuang" name="pass"/></td>
+          <td class="text" id="password">6-12位数字或字母<br />（区分大小写）</td>
+      </tr>
+      <tr>
+          <td class="loginword">确认密码</td><td class="space"></td>
+          <td><input type="password" class="kuang" name="pw"/></td>
+          <td class="text" id="pw"></td>
+      </tr>
+      </table>
+      </div>
+  <!-- 提交  -->
+      <div id="lobot">
+      <div id="submit" >
+      <input type="submit" value="" id="sub"/>
+      </div>
+      </div>
+      </div>
+    </div>
+    </form>
+    <div id="right"></div>
+  </div>
+  <hr />
+<!--脚  -->
+  <div id="foot">©2015 Shandong University,Weihai.All rights reserved.</div>
+</body>
+</html>

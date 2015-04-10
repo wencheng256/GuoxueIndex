@@ -1,0 +1,81 @@
+*{
+  margin:0;
+  padding:0;
+}
+#head{
+  width:1200px;
+  height:100px;
+  margin:0 auto;
+}
+#logof{
+  width:100px;
+  height:100px;
+  float:left;
+}
+#logo{
+  width:350px;
+  height:100px;
+  float:left;
+}
+#center{
+  width:1200px;
+  height:656px;
+  margin:0 auto;
+  background: url(../img/endgg.jpg);
+}
+#shang{
+  width:1200px;
+  height: 157px;
+  float:left;
+}
+#zhong{
+  width:1200px;
+  height: 393px;
+  float: left;
+}
+#zhong1{
+  width:315px;
+  height: 393px;
+  float: left;
+}
+#zhong2{
+  width:305px;
+  height: 25px;
+  padding:360px 0 0 0;
+  font-family: "微软雅黑";
+  font-size: 28px;
+  float: left;
+}
+#zhong3{
+  width:195px;
+  height: 393px;
+  font-size: 150px;
+  font-family: "微软雅黑";
+  float: left;
+}
+#zhong4{
+  width: 385px;
+  height: 393px;
+  float: left;
+}
+
+#xia{
+  width: 885px;
+  height: 106px;
+  padding:3px 0 0 315px;
+  font-family: "微软雅黑";
+  font-size: 28px;
+  float: left;
+}
+
+
+
+#foot{
+  text-align: center;
+  font-size: 12px;
+  color:black;
+  width:1200px;
+  height:50px;
+  padding-top: 30px;
+  margin:0 auto;
+}
