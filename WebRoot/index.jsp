@@ -1,4 +1,5 @@
-<%@ page language="java" import="com.User" pageEncoding="UTF-8"%>
+<%@ page language="java" import="com.*" pageEncoding="UTF-8"%>
+<%MyLogger.start(); %>
 <%
 	User user=(User)session.getAttribute("user");
 	if(user!=null)
