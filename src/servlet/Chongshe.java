@@ -3,6 +3,8 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -76,7 +78,8 @@ public class Chongshe extends HttpServlet {
 				mysql.update(sql);
 				response.sendRedirect("index.jsp");
 			} catch (SQLException e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+				// TODO ï¿½Ô¶ï¿½ï¿½ï¿½Éµï¿½ catch ï¿½ï¿½
+				Logger.getLogger("log").log(Level.WARNING,e.getMessage());
 				e.printStackTrace();
 				response.sendRedirect("error.html");
 			}

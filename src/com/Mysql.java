@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Mysql {
 	
@@ -125,6 +127,7 @@ public class Mysql {
 				return "error";
 			}		
 		} catch (SQLException e) {
+			Logger.getLogger("log").log(Level.WARNING,e.getMessage());
 			return "error";
 		}
 		

@@ -7,6 +7,8 @@ import com.*;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -90,7 +92,8 @@ public class Login extends HttpServlet {
 				response.sendRedirect("result.jsp");
 				break;
 			} catch (SQLException e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+				// TODO ï¿½Ô¶ï¿½ï¿½ï¿½Éµï¿½ catch ï¿½ï¿½
+				Logger.getLogger("log").log(Level.WARNING,e.getMessage());
 				response.sendRedirect("exist.html");
 				break;
 			}
@@ -105,7 +108,8 @@ public class Login extends HttpServlet {
 				response.sendRedirect("start.html");
 				break;
 			} catch (SQLException e) {
-				// TODO ×Ô¶¯Éú³ÉµÄ catch ¿é
+				// TODO ï¿½Ô¶ï¿½ï¿½ï¿½Éµï¿½ catch ï¿½ï¿½
+				Logger.getLogger("log").log(Level.WARNING,e.getMessage());
 				response.sendRedirect("error.html");
 				break;
 			}
