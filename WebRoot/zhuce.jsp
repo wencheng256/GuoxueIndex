@@ -94,5 +94,13 @@
 <!--脚  -->
 </form>
   <div id="foot">©2015 Shandong University,Weihai.All rights reserved.</div>
+<script>
+window.onload=function(){
+$("#xueyuan").on('change',function(event) {
+var checkValue=$("#xueyuan").val();  //获取Select选择的Value
+alert(checkValue);
+});
+}
+</script>
 </body>
 </html>
