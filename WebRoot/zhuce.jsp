@@ -98,9 +98,17 @@
 window.onload=function(){
 $("#xueyuan").on('change',function(event) {
 var checkValue=$("#xueyuan").val();  //获取Select选择的Value
-alert(checkValue);
+$.ajax({
+  url: 'classlist.jsp?shcool='+checkValue,
+  type: 'Get',
+  success:function(responseText, textStatus, XMLHttpRequest)
+  {alert(XMLHttpRequest.responseText);}
 });
-}
+});
+//ajax
+
+
+};
 </script>
 </body>
 </html>
