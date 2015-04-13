@@ -51,7 +51,7 @@
       </tr>
       <tr>
           <td class="loginword">班级</td><td class="space"></td>
-          <td><select name="class" id="xueyuan" class="fuxuan">
+          <td><select name="class" id="banji" class="fuxuan">
                 <option value="3" selected="selected">请选择</option>
                 <option value="3">12数字媒体技术</option>
               </select>
@@ -99,10 +99,10 @@ window.onload=function(){
 $("#xueyuan").on('change',function(event) {
 var checkValue=$("#xueyuan").val();  //获取Select选择的Value
 $.ajax({
-  url: 'classlist.jsp?shcool='+checkValue,
+  url: 'classlist.jsp?school='+checkValue,
   type: 'Get',
   success:function(responseText, textStatus, XMLHttpRequest)
-  {alert(XMLHttpRequest.responseText);}
+  {$("#banji").html(XMLHttpRequest.responseText);}
 });
 });
 //ajax
