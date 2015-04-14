@@ -1,11 +1,15 @@
 package com;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,16 +24,25 @@ public class Mysql {
 	
 	private Mysql()
 	{
-		String url="jdbc:mysql://localhost:3306/guoxue?useUnicode=true&characterEncoding=gbk";
 		try {
+			Scanner in=new Scanner(getClass().getResourceAsStream("mysql.txt"));
+			String host=in.nextLine();
+			String duan=in.nextLine();
+			String db=in.nextLine();
+			String username=in.nextLine();
+			String pass=in.nextLine();
+			
+			String url="jdbc:mysql://"+host+":"+duan+"/"+db+"?useUnicode=true&characterEncoding=utf-8";
 			Class.forName("com.mysql.jdbc.Driver");
-			connection= DriverManager.getConnection(url,"root","abc123");
+			connection= DriverManager.getConnection(url,username,pass);
 			sele=connection.prepareStatement("SELECT * FROM ?");
 			statement=connection.createStatement();
 			question=connection.createStatement();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			Logger.getLogger("log").log(Level.WARNING,e.getMessage());
+			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
+			Logger.getLogger("log").log(Level.WARNING,e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -81,6 +94,7 @@ public class Mysql {
 				return 2;
 			}
 		} catch (SQLException e) {
+			Logger.getLogger("log").log(Level.WARNING,e.getMessage());
 			e.printStackTrace();
 			return 2;
 		}
@@ -106,6 +120,7 @@ public class Mysql {
 			statement.executeUpdate(sql);
 			return statement.executeUpdate(sql1);
 		} catch (SQLException e) {
+			Logger.getLogger("log").log(Level.WARNING,e.getMessage());
 			e.printStackTrace();
 			return -1;
 		}

@@ -1,0 +1,5 @@
+localhost
+3306
+guoxue
+root
+abc123
