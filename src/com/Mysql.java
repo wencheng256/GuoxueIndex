@@ -32,7 +32,7 @@ public class Mysql {
 			String username=in.nextLine();
 			String pass=in.nextLine();
 			
-			String url="jdbc:mysql://"+host+":"+duan+"/"+db+"?useUnicode=true&characterEncoding=utf-8";
+			String url="jdbc:mysql://"+host+":"+duan+"/"+db+"?useUnicode=true&characterEncoding=utf-8&autoReconnect=true";
 			Class.forName("com.mysql.jdbc.Driver");
 			connection= DriverManager.getConnection(url,username,pass);
 			sele=connection.prepareStatement("SELECT * FROM ?");
