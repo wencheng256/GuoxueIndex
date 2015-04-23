@@ -1,6 +1,8 @@
-<%@ page language="java" import="java.sql.*" import="java.util.Random" import="com.*"  contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.sql.*" import="java.util.*" import="com.*"  contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:useBean id="data" class="bean.data"></jsp:useBean>
-
+<%!Question question=new Question();
+   ArrayList<Question> arr=question.selectQuestion();
+%>
 <%User user=(User)session.getAttribute("user");
 if(user==null)
 	response.sendRedirect("index.jsp");
@@ -8,8 +10,7 @@ else if(user.getCheck()==1)
 	response.sendRedirect("result.jsp");
 %>
 <% 
-	int num=data.getCount();
-	ResultSet rs=data.getExercise();
+	int num=arr.size();
 	int i=1;
 	Random rand=new Random();
 	int[] answer=new int[51];
@@ -56,18 +57,18 @@ else if(user.getCheck()==1)
 <div id="tiku">
 <!-- 1道题实例 -->
 <%while(i<51){ %>
-<%rs.absolute(rand.nextInt(num)+1); %>
-    <p class="timu"><%=i %>、<%=rs.getString(1)%></p>
+<%Question que=arr.get(rand.nextInt(num)); %>
+    <p class="timu"><%=i %>、<%=que.getQuestion()%></p>
     <br />
           <table>
-            <tr><td class="num"><input type="radio" name="radio<%=i%>" value="1" /> A</td><td class="table"><%=rs.getString(2)%></td></tr>
-            <tr><td class="num"><input type="radio" name="radio<%=i%>" value="2" /> B</td><td class="table"><%=rs.getString(3)%></td></tr>
-            <tr><td class="num"><input type="radio" name="radio<%=i%>" value="3" /> C</td><td class="table"><%=rs.getString(4)%></td></tr>
-            <tr><td class="num"><input type="radio" name="radio<%=i%>" value="4" /> D</td><td class="table"><%=rs.getString(5)%></td></tr>
+            <tr><td class="num"><input type="radio" name="radio<%=i%>" value="1" /> A</td><td class="table"><%=que.getSelect_a()%></td></tr>
+            <tr><td class="num"><input type="radio" name="radio<%=i%>" value="2" /> B</td><td class="table"><%=que.getSelect_b()%></td></tr>
+            <tr><td class="num"><input type="radio" name="radio<%=i%>" value="3" /> C</td><td class="table"><%=que.getSelect_c()%></td></tr>
+            <tr><td class="num"><input type="radio" name="radio<%=i%>" value="4" /> D</td><td class="table"><%=que.getSelect_d()%></td></tr>
           </table>
      <br/>
 <%
-answer[i]=rs.getInt(6);
+answer[i]=que.getCorrect();
 i++;	} %>
 <%session.setAttribute("answer",answer); %>
 </div>
