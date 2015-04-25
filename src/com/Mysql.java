@@ -19,7 +19,6 @@ public class Mysql {
 	private Connection connection;
 	private Statement statement;
 	private PreparedStatement sele;
-	private Statement question;
 	private ResultSet result=null;
 	
 	private Mysql()
@@ -37,7 +36,6 @@ public class Mysql {
 			connection= DriverManager.getConnection(url,username,pass);
 			sele=connection.prepareStatement("SELECT * FROM ?");
 			statement=connection.createStatement();
-			question=connection.createStatement();
 		} catch (SQLException e) {
 			Logger.getLogger("log").log(Level.WARNING,e.getMessage());
 			e.printStackTrace();
@@ -106,7 +104,7 @@ public class Mysql {
 			return result;
 		else{
 			String sql="SELECT content,select_a,select_b,select_c,select_d,select_correct from exercise";
-			result=question.executeQuery(sql);
+			result=statement.executeQuery(sql);
 			return result;
 		}
 	}

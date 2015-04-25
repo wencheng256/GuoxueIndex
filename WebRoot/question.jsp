@@ -1,16 +1,16 @@
 <%@ page language="java" import="java.sql.*" import="java.util.*" import="com.*"  contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:useBean id="data" class="bean.data"></jsp:useBean>
-<%!Question question=new Question();
-   ArrayList<Question> arr=question.selectQuestion();
-%>
 <%User user=(User)session.getAttribute("user");
 if(user==null)
 	response.sendRedirect("index.jsp");
 else if(user.getCheck()==1)
 	response.sendRedirect("result.jsp");
 %>
+<%
+   Vector<Question> arr1=Question.selectQuestion();
+   int num=arr1.size();
+%>
 <% 
-	int num=arr.size();
 	int i=1;
 	Random rand=new Random();
 	int[] answer=new int[51];
@@ -20,7 +20,7 @@ else if(user.getCheck()==1)
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-  <title>国学达人知识竞赛</title>
+  <title>国学达人知识竞赛 </title>
   <link rel="stylesheet" href="style/dati.css" type="text/css"/>
   <script src="JS/jquery-1.11.2.min.js"></script>
   <script>
@@ -57,7 +57,7 @@ else if(user.getCheck()==1)
 <div id="tiku">
 <!-- 1道题实例 -->
 <%while(i<51){ %>
-<%Question que=arr.get(rand.nextInt(num)); %>
+<%Question que=arr1.get(rand.nextInt(num)); %>
     <p class="timu"><%=i %>、<%=que.getQuestion()%></p>
     <br />
           <table>

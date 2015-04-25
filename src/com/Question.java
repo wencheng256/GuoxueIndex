@@ -3,6 +3,7 @@ package com;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,15 +16,14 @@ public class Question {
 	private String select_b;
 	private String select_c;
 	private String select_d;
-	private ArrayList<Question> arr=null;
-	private data data;
+	static private Vector<Question> arr;
+	private static data data;
 	
 	private int correct;
 	
 	
 	public Question()
 	{
-		data=new data();
 	}
 
 	public String getQuestion() {
@@ -74,12 +74,13 @@ public class Question {
 		this.correct = correct;
 	}
 	
-	public ArrayList<Question> selectQuestion()
+	static public Vector<Question> selectQuestion() throws SQLException
 	{
-		try {
-			arr=new ArrayList<Question>();
+		data=new data();
+		if(arr==null)
+		{
+			arr=new Vector<Question>();
 			ResultSet rs=data.getExercise();
-			System.out.println("初始化赋值");
 			while(rs.next())
 			{
 				Question ques=new Question();
@@ -91,12 +92,8 @@ public class Question {
 				ques.setCorrect(rs.getInt(6));
 				arr.add(ques);
 			}
-			return arr;
-		} catch (SQLException e) {
-			// TODO 自动生成的 catch 块
-			e.printStackTrace();
-			Logger.getLogger("log").log(Level.WARNING,e.getMessage());
-			return null;
-		}
-	} 
+			System.out.println("初始化赋值成功");
+		} 
+		return arr;
+	}
 }
